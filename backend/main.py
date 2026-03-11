@@ -46,8 +46,8 @@ def search(movie: str, region: str):
     # movie_details = (response[0].id, response[0].title, response[0].poster_path)  # check this for correctness
 
     # Stage 2
-    streaming_response = httpx.get(
-    "https://streaming-availability.p.rapidapi.com/shows/movie/{movie_id}",
+    print(f"Movie ID being sent: {movie_id}")  # for debugging purposes
+    streaming_response = httpx.get(f"https://streaming-availability.p.rapidapi.com/shows/movie/{movie_id}",
     headers={
         "X-RapidAPI-Key": RAPIDAPI_KEY,
         "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com"
@@ -55,7 +55,9 @@ def search(movie: str, region: str):
     params={"country": region.lower()})
     
     streaming_data = streaming_response.json()
-    platform_names = list(streaming_data.get("streamingOptions", {}).get(region.lower(), {}).keys())
+    print(streaming_data.get("streamingOptions", {}))  # for debugging
+    streaming_options = streaming_data.get("streamingOptions", {}).get(region.lower(), [])
+    platform_names = list(set(option["service"]["name"] for option in streaming_options))
 
     # Stage 3
     # movie_name = movie_details[1]
