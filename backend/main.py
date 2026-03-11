@@ -7,7 +7,16 @@ from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def set_up_db_connection():
     con = sqlite3.connect("streamfinder.db")
@@ -93,4 +102,7 @@ def history():
     cur.execute("SELECT * FROM searches ORDER BY searched_at DESC;")
     rows = cur.fetchall()
     con.close()
-    return rows
+    return [
+    {"id": r[0], "movie": r[1], "region": r[2], "platforms": r[3], "searched_at": r[4]}
+    for r in rows
+]
