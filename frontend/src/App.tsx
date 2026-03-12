@@ -1,4 +1,5 @@
 import SearchBar from './components/SearchBar'
+import ResultsPanel from './components/ResultsPanel'
 import { useState } from 'react'
 import type { SearchResult } from './types'
 import { searchMovie } from './api'
@@ -32,7 +33,7 @@ function App() {
 
         {loading && <p>Loading...</p>}
         {errorMessage && <p>{errorMessage}</p>}
-        {searchResult && <p>{searchResult.title}</p>}
+        {searchResult && <ResultsPanel result={searchResult} />}
 
     </div>
   )

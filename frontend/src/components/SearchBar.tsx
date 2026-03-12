@@ -4,9 +4,10 @@ interface SearchBarProps {
     onSearch: (movie: string, region: string) => void;
 }
 
+// searchBar component
 function SearchBar({ onSearch }: SearchBarProps) {
-    const [movieName, setMovieName] = useState("")
-    const [region, setRegion] = useState("")
+    const [movieName, setMovieName] = useState("")  // movieName state variable
+    const [region, setRegion] = useState("")  // region state variable
 
     function handleSubmit() {
         if (movieName && region) {
@@ -14,6 +15,7 @@ function SearchBar({ onSearch }: SearchBarProps) {
         }
     }
 
+    // jsx
     return (
         <div>
             {/* your inputs and button go here */} 
@@ -34,21 +36,3 @@ function SearchBar({ onSearch }: SearchBarProps) {
 }
 
 export default SearchBar
-
-/*
-const MovieName: React.FC = () => {
-    // Define a state variable of type number with an initial value of 0
-    const [movie_name, setMovieName] = useState<string>("");
- 
-    const set_name = () => {
-        setMovieName(movie_name);
-    };
- 
-    return (
-        <div>
-            <p>Movie Name: {movie_name}</p>
-            <button onClick={setMovieName}>Submit</button>
-        </div>
-    );
-};
-*/
