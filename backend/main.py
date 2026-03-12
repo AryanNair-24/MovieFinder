@@ -40,7 +40,9 @@ def search(movie: str, region: str):
     # Stage 1
     response = httpx.get(
     "https://api.themoviedb.org/3/search/movie",
-    params={"api_key": TMDB_API_KEY, "query": movie})
+    params={"api_key": TMDB_API_KEY, "query": movie},
+    timeout=10.0
+    )
     
     results = response.json()["results"]
     
@@ -61,7 +63,8 @@ def search(movie: str, region: str):
         "X-RapidAPI-Key": RAPIDAPI_KEY,
         "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com"
     },
-    params={"country": region.lower()})
+    params={"country": region.lower()},
+    timeout = 10.0)
     
     streaming_data = streaming_response.json()
     print(streaming_data.get("streamingOptions", {}))  # for debugging
