@@ -1,6 +1,6 @@
 import type { SearchResult, HistoryEntry } from "./types";
 
-const BASE_URL = "https://your-render-url.onrender.com";
+const BASE_URL = "https://moviefinder-qbor.onrender.com";
 
 export async function searchMovie(movie: string, region: string): Promise<SearchResult> {
   const response = await fetch(`${BASE_URL}/search?movie=${encodeURIComponent(movie)}&region=${encodeURIComponent(region)}`);
