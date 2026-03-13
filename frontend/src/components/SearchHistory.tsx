@@ -18,8 +18,17 @@ function SearchHistory({ refreshHistory }: SearchHistory) {
     }, [refreshHistory])
 
     return (
-        <div>
-            {history.map(entry => (<p key={entry.id}>{entry.movie} | {entry.region} | {entry.platforms} | {entry.searched_at}</p>))}
+        <div className="flex flex-col gap-2 p-4 bg-gray-800 rounded-lg">
+            <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">Past Searches</h2>
+            {history.map(entry => (<div className="border-b border-gray-700 py-2"
+                                    key={entry.id}>
+                                        <div className="flex justify-between gap-2">
+                                            <span className="text-sm font-medium">{entry.movie}</span>
+                                            <span className="text-xs text-gray-400">{entry.region.toUpperCase()}</span>
+                                        </div>
+                                        <p className="text-xs text-gray-400">{entry.platforms}</p>
+                                        <p className="text-xs text-gray-600">{new Date(entry.searched_at).toLocaleDateString()}</p>
+                                    </div>))}
         </div>
     );
 }
