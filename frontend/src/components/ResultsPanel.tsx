@@ -1,5 +1,3 @@
-import React from 'react'
-
 import type { SearchResult } from '../types';
 
 interface ResultsPanelProps {
