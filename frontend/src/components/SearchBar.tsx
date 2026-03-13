@@ -17,19 +17,21 @@ function SearchBar({ onSearch }: SearchBarProps) {
 
     // jsx
     return (
-        <div>
+        <div className="flex flex-col gap-3 mb-6">
             {/* your inputs and button go here */} 
-            <input
+            <input className="w-full p-2 border border-gray-600 rounded bg-gray-800 test-gray-100 focus:outline-none focus:border-gray-400"
+            placeholder='Movie Title'
             value={movieName}
             onChange={(e) => setMovieName(e.target.value)}
             />
 
-            <input
+            <input className="w-full p-2 border border-gray-600 rounded bg-gray-800 test-gray-100 focus:outline-none focus:border-gray-400"
+            placeholder='Region (e.g. CA, US, etc.)'
             value={region}
             onChange={(e) => setRegion(e.target.value)}
             />
 
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} className='px-4 py-2 bg-gray-500 rounded hover:bg-gray-600 w-full'>Submit</button>
 
         </div>
     )
