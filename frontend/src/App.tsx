@@ -34,9 +34,9 @@ function App() {
   return (
     <div className={darkMode ? "min-h-screen bg-gray-900 text-gray-100" : "min-h-screen bg-white text-gray-900"}>
 
-        <div className="flex justify-between items-center p-4 border-b border-gray-700">
-            <h1>Stream Finder</h1>
-            <button onClick={() => {setDarkMode(!darkMode)}}>Toggle Theme</button>
+        <div className={'flex justify-between items-center p-4 border-b ${darkMode ? "border-gray-700" : "border-gray-200"}'}>
+            <h1 className="text-2x1 font-bold tracking-tight">Stream Finder</h1>
+            <button className="text-xl p-2 rounded-lg border border-gray-600 hover:bg-gray-700 transition-colors" onClick={() => {setDarkMode(!darkMode)}}>{darkMode ? "☀️" : "🌙"}</button>
         </div>
 
         <div className="flex p-4 gap-6">
