@@ -13,7 +13,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://movie-finder-liart-gamma.vercel.app/"],
+    allow_origins=["http://localhost:5173", "https://movie-finder-git-main-aryannair-24s-projects.vercel.app"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
