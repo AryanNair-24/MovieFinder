@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { fetchHistory } from "../api";
 import type { HistoryEntry } from "../types";
 
-function SearchHistory() {
+interface SearchHistory {
+    refreshHistory: number;
+}
+
+function SearchHistory({ refreshHistory }: SearchHistory) {
     const [history, setHistory] = useState<HistoryEntry[]>([])  // history state variable
 
     useEffect(() => {
@@ -11,7 +15,7 @@ function SearchHistory() {
             setHistory(data)
         }
         loadHistory()
-    }, [])
+    }, [refreshHistory])
 
     return (
         <div>
